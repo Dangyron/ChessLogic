@@ -1,0 +1,11 @@
+E:\uni\3k\2s\spi\unityProjs\ChessLogic\ChessLogic\bin\Debug\net7.0\ChessLogic.deps.json
+E:\uni\3k\2s\spi\unityProjs\ChessLogic\ChessLogic\bin\Debug\net7.0\ChessLogic.dll
+E:\uni\3k\2s\spi\unityProjs\ChessLogic\ChessLogic\bin\Debug\net7.0\ChessLogic.pdb
+E:\uni\3k\2s\spi\unityProjs\ChessLogic\ChessLogic\obj\Debug\net7.0\ChessLogic.GeneratedMSBuildEditorConfig.editorconfig
+E:\uni\3k\2s\spi\unityProjs\ChessLogic\ChessLogic\obj\Debug\net7.0\ChessLogic.AssemblyInfoInputs.cache
+E:\uni\3k\2s\spi\unityProjs\ChessLogic\ChessLogic\obj\Debug\net7.0\ChessLogic.AssemblyInfo.cs
+E:\uni\3k\2s\spi\unityProjs\ChessLogic\ChessLogic\obj\Debug\net7.0\ChessLogic.csproj.CoreCompileInputs.cache
+E:\uni\3k\2s\spi\unityProjs\ChessLogic\ChessLogic\obj\Debug\net7.0\ChessLogic.dll
+E:\uni\3k\2s\spi\unityProjs\ChessLogic\ChessLogic\obj\Debug\net7.0\refint\ChessLogic.dll
+E:\uni\3k\2s\spi\unityProjs\ChessLogic\ChessLogic\obj\Debug\net7.0\ChessLogic.pdb
+E:\uni\3k\2s\spi\unityProjs\ChessLogic\ChessLogic\obj\Debug\net7.0\ref\ChessLogic.dll
