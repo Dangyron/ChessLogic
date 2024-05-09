@@ -1,14 +1,15 @@
 ﻿namespace ChessLogic;
 
 public readonly struct Position : IEquatable<Position>
-{ 
+{
+    public static readonly Position None = new(-1, -1);
     public Position(int x, int y)
     {
         X = x;
         Y = y;
     }
     
-    public Position(string position)
+    public Position(ReadOnlySpan<char> position)
     {
         X = position[0] - 'a';
         Y = position[1] - '1';

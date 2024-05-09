@@ -16,4 +16,12 @@ public static class PlayerColorExtensions
             PlayerColor.Black => PlayerColor.White,
             _ => player,
         };
+
+    public static string ToString(this PlayerColor player) =>
+        player switch
+        {
+            PlayerColor.White => "w",
+            PlayerColor.Black => "b",
+            _ => "",
+        };
 }

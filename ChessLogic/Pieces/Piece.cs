@@ -37,23 +37,19 @@ public abstract class Piece
 
     public PieceType Type { get; }
     public PlayerColor Color { get; }
-    public bool IsMoved { get; protected set; }
+    public bool IsMoved { get; set; }
 
     public abstract Piece GetClone();
 
     public abstract IEnumerable<Move> GetMoves(Board board, Position from);
 
     public virtual bool CanCaptureOpponentKing(Board board, Position from) =>
-        GetMoves(board, from).Any(move =>
-        {
-            var piece = board[move.To];
-            return piece != None && piece.Type == PieceType.King;
-        });
+        GetMoves(board, from).Any(move => board[move.To].Type == PieceType.King);
     
     protected IEnumerable<Move> GetMovesInDirections(Board board, Position from, Direction[] directions) =>
         directions.SelectMany(direction => GetMovesInDirection(board, from, direction));
 
-    protected virtual bool CanMoveTo(Board board, Position to) => board.IsEmptyAt(to) || board[to].Color != Color;
+    protected virtual bool CanMoveTo(Board board, Position to) => to.IsValid && (board.IsEmptyAt(to) || board[to].Color != Color);
 
     private IEnumerable<Move> GetMovesInDirection(Board board, Position from, Direction direction)
     {

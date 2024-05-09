@@ -10,13 +10,14 @@ public sealed class CommonMove : Move
 
     public override bool Make(Board board)
     {
-        var isPawnMovedOrPieceCaptured = false;
         var piece = board[From];
+        CapturedPiece = board[To];
+        
+        board[To] = piece;
+        board[From] = Piece.None;
 
-        if (piece.Type == PieceType.Pawn || board[To].Type != PieceType.None)
-            isPawnMovedOrPieceCaptured = true;
-
-
-        return isPawnMovedOrPieceCaptured;
+        piece.IsMoved = true;
+        
+        return piece.Type == PieceType.Pawn || CapturedPiece.Type != PieceType.None;
     }
 }

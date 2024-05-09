@@ -2,8 +2,10 @@
 
 public enum GameEndReason
 {
-    CheckMate,
-    StaleMate,
+    Checkmate,
+    Stalemate,
     Aborted,
-    FiftyMovesRule,
+    FiftyMoveRule,
+    InsufficientMaterial,
+    ThreefoldRepetition,
 }
