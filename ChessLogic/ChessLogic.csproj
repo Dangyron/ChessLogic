@@ -4,6 +4,10 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+		<PackageId>Dangyron.ChessLogic</PackageId>
+		<Version>1.0.1</Version>
+		<Author>Dangyron</Author>
+		<Product>ChessLogic</Product>
     </PropertyGroup>
 
 </Project>

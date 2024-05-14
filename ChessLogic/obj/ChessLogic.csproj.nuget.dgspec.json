@@ -5,10 +5,10 @@
   },
   "projects": {
     "E:\\uni\\3k\\2s\\spi\\unityProjs\\ChessLogic\\ChessLogic\\ChessLogic.csproj": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "restore": {
         "projectUniqueName": "E:\\uni\\3k\\2s\\spi\\unityProjs\\ChessLogic\\ChessLogic\\ChessLogic.csproj",
-        "projectName": "ChessLogic",
+        "projectName": "Dangyron.ChessLogic",
         "projectPath": "E:\\uni\\3k\\2s\\spi\\unityProjs\\ChessLogic\\ChessLogic\\ChessLogic.csproj",
         "packagesPath": "C:\\Users\\Dangyron\\.nuget\\packages\\",
         "outputPath": "E:\\uni\\3k\\2s\\spi\\unityProjs\\ChessLogic\\ChessLogic\\obj\\",
@@ -38,6 +38,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {

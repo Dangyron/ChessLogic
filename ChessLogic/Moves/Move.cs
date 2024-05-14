@@ -6,19 +6,6 @@ public abstract class Move
 {
     public static readonly Move None = new NoneMove();
     
-    public static Move Create(ReadOnlySpan<char> move)
-    {
-        var moveLength = move.Length;
-        
-        if (moveLength is < 4 or > 5)
-            return None;
-
-        var from = new Position(move[..2]);
-        var to = new Position(move[2..4]);
-
-        return new CommonMove(from, to);
-    }
-    
     protected Move(Position from, Position to)
     {
         From = from;

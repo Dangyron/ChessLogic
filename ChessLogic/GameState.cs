@@ -11,7 +11,7 @@ public sealed class GameState
 
     private readonly Dictionary<string, int> _positionsHistory = new();
     private string _currentState;
-    
+
     public GameState(string fen = DefaultFen)
     {
         var parts = fen.Split();
@@ -21,7 +21,7 @@ public sealed class GameState
         MoveNumber = int.Parse(parts[5]);
         _currentState = _board + " " + _board.GetCastlingRights() + GetEnPassantTarget();
         Pgn = $"{MoveNumber}. ";
-        
+
         InitCounter();
         CheckIfGameOver();
         _positionsHistory[_currentState] = 1;
@@ -45,7 +45,7 @@ public sealed class GameState
         {
             FiftyMoveRuleCount = 0;
             _positionsHistory.Clear();
-            
+
             if (move.CapturedPiece != Piece.None)
                 _counter.RemovePiece(CurrentPlayer.GetOpponent(), move.CapturedPiece.Type);
         }
@@ -65,7 +65,41 @@ public sealed class GameState
         + " " + _board.GetCastlingRights() + " " + GetEnPassantTarget() + " " + FiftyMoveRuleCount + " " + MoveNumber;
 
     public string GetBoard() => _board.ToString();
-    
+
+    public Move ParseMove(ReadOnlySpan<char> move)
+    {
+        if (move.Length != 7)
+            return Move.None;
+
+        var from = new Position(move[1..3]);
+        var to = new Position(move[3..5]);
+
+        var piece = _board[from];
+
+        return piece.GetMoves(_board, from).FirstOrDefault(mv => mv.To == to, Move.None);
+    }
+
+    public string ConvertMoveToString(Move move)
+    {
+        var piece = _board[move.To];
+        var type = GetLastElements();
+
+        return piece.ToString() + move.From + move.To + type;
+
+        string GetLastElements()
+        {
+            return move.GetType() switch
+            {
+                var t when t == typeof(CommonMove) => "C ",
+                var t when t == typeof(Castling) => ((Castling)move).Direction == Direction.Right ? "R " : "L ",
+                var t when t == typeof(EnPassant) => "E ",
+                var t when t == typeof(PawnDoubleMove) => "D ",
+                var t when t == typeof(Promotion) => "P" + ((Promotion)move).PromotionPiece,
+                _ => "  "
+            };
+        }
+    }
+
     public IEnumerable<Move> GetLegalMovesForPieceAt(Position from)
     {
         if (!_board.IsEmptyAt(from) || _board[from].Color == CurrentPlayer)
@@ -81,7 +115,7 @@ public sealed class GameState
 
     private string GetEnPassantTarget() =>
         GetAllMovesForPlayer(CurrentPlayer).FirstOrDefault(move => move is EnPassant)?.To.ToString() ?? "-";
-    
+
     private void CheckIfGameOver()
     {
         if (!GetAllMovesForPlayer(CurrentPlayer).Any())
@@ -117,7 +151,7 @@ public sealed class GameState
             if (_counter.Total != 4)
                 return false;
 
-            if (_counter.GetPieceCount(CurrentPlayer, PieceType.Bishop) != 1 || 
+            if (_counter.GetPieceCount(CurrentPlayer, PieceType.Bishop) != 1 ||
                 _counter.GetPieceCount(CurrentPlayer.GetOpponent(), PieceType.Bishop) != 1)
                 return false;
 
@@ -127,10 +161,10 @@ public sealed class GameState
             var blackBishop = _board.GetPiecesPositionForPlayer(PlayerColor.Black)
                 .First(p => _board[p].Type == PieceType.Bishop);
 
-            return (whiteBishop.X + whiteBishop.Y ) % 2 == (blackBishop.X + blackBishop.Y ) % 2;
+            return (whiteBishop.X + whiteBishop.Y) % 2 == (blackBishop.X + blackBishop.Y) % 2;
         }
     }
-    
+
     private bool IsFiftyMoveRule() => FiftyMoveRuleCount == 100;
 
     private bool IsThreefoldRepetition() => _positionsHistory.ContainsValue(3);

@@ -4,34 +4,29 @@ namespace ChessLogic.Moves;
 
 public sealed class Promotion : Move
 {
-    private Piece? _newPiece;
-
     public Promotion(Position from, Position to, PieceType promotionType) : base(from, to)
     {
-        PromotionType = promotionType;
+        PromotionPiece = CreatePromotionPiece(To.Y == 7 ? PlayerColor.White : PlayerColor.Black, promotionType);
     }
 
-    public PieceType PromotionType { get; }
+    public Piece PromotionPiece { get; }
 
     public override string ToString(Board board)
     {
-        _newPiece ??= CreatePromotionPiece(board[From].Color);
-        return base.ToString(board) + "=" + _newPiece;
+        return base.ToString(board) + "=" + PromotionPiece;
     }
 
     public override bool Make(Board board)
     {
-        var pawn = board[From];
         board[From] = Piece.None;
-
-        _newPiece ??= CreatePromotionPiece(pawn.Color);
+        
         CapturedPiece = board[To];
-        board[To] = _newPiece;
+        board[To] = PromotionPiece;
         return true;
     }
 
-    private Piece CreatePromotionPiece(PlayerColor player) =>
-        PromotionType switch
+    private Piece CreatePromotionPiece(PlayerColor player, PieceType promotionType) =>
+        promotionType switch
         {
             PieceType.Knight => new Knight(player) { IsMoved = true },
             PieceType.Bishop => new Bishop(player) { IsMoved = true },
