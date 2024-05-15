@@ -102,7 +102,7 @@ public sealed class GameState
 
     public IEnumerable<Move> GetLegalMovesForPieceAt(Position from)
     {
-        if (!_board.IsEmptyAt(from) || _board[from].Color == CurrentPlayer)
+        if (!_board.IsEmptyAt(from) || _board[from].Color != CurrentPlayer)
             return Enumerable.Empty<Move>();
 
         return _board[from].GetMoves(_board, from).Where(move => move.IsLegal(_board));
