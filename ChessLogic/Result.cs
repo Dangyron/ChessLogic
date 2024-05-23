@@ -1,18 +1,19 @@
 ﻿using ChessLogic.Pieces;
 
-namespace ChessLogic;
-
-public sealed class Result
+namespace ChessLogic
 {
-    public static Result Win(PlayerColor winner) => new(winner, GameEndReason.Checkmate);
-    public static Result Draw(GameEndReason endReason) => new(PlayerColor.None, endReason);
-    
-    public Result(PlayerColor winner, GameEndReason endReason)
+    public sealed class Result
     {
-        Winner = winner;
-        EndReason = endReason;
-    }
+        public static Result Win(PlayerColor winner) => new Result(winner, GameEndReason.Checkmate);
+        public static Result Draw(GameEndReason endReason) => new Result(PlayerColor.None, endReason);
+    
+        public Result(PlayerColor winner, GameEndReason endReason)
+        {
+            Winner = winner;
+            EndReason = endReason;
+        }
 
-    public PlayerColor Winner { get; }
-    public GameEndReason EndReason { get; }
+        public PlayerColor Winner { get; }
+        public GameEndReason EndReason { get; }
+    }
 }

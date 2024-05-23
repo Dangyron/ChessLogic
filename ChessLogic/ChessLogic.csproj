@@ -1,13 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
 		<PackageId>Dangyron.ChessLogic</PackageId>
-		<Version>1.0.2</Version>
+		<Version>1.0.4</Version>
 		<Author>Dangyron</Author>
 		<Product>ChessLogic</Product>
+		<TargetFrameworks>net7.0;netstandard2.1</TargetFrameworks>
     </PropertyGroup>
 
 </Project>

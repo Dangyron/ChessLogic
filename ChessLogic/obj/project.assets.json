@@ -1,10 +1,12 @@
 {
   "version": 3,
   "targets": {
+    ".NETStandard,Version=v2.1": {},
     "net7.0": {}
   },
   "libraries": {},
   "projectFileDependencyGroups": {
+    ".NETStandard,Version=v2.1": [],
     "net7.0": []
   },
   "packageFolders": {
@@ -12,7 +14,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "1.0.1",
+    "version": "1.0.3",
     "restore": {
       "projectUniqueName": "E:\\uni\\3k\\2s\\spi\\unityProjs\\ChessLogic\\ChessLogic\\ChessLogic.csproj",
       "projectName": "Dangyron.ChessLogic",
@@ -20,6 +22,7 @@
       "packagesPath": "C:\\Users\\Dangyron\\.nuget\\packages\\",
       "outputPath": "E:\\uni\\3k\\2s\\spi\\unityProjs\\ChessLogic\\ChessLogic\\obj\\",
       "projectStyle": "PackageReference",
+      "crossTargeting": true,
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
@@ -29,7 +32,8 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net7.0"
+        "net7.0",
+        "netstandard2.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -39,17 +43,16 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {}
+        },
+        "netstandard2.1": {
+          "targetAlias": "netstandard2.1",
+          "projectReferences": {}
         }
       },
       "warningProperties": {
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -68,6 +71,26 @@
         "warn": true,
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.407\\RuntimeIdentifierGraph.json"
+      },
+      "netstandard2.1": {
+        "targetAlias": "netstandard2.1",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "NETStandard.Library": {
             "privateAssets": "all"
           }
         },

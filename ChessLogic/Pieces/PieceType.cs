@@ -1,12 +1,13 @@
-﻿namespace ChessLogic.Pieces;
-
-public enum PieceType
+﻿namespace ChessLogic.Pieces
 {
-    None,
-    Pawn,
-    Knight,
-    Bishop,
-    Rook,
-    Queen,
-    King,
+    public enum PieceType
+    {
+        None,
+        Pawn,
+        Knight,
+        Bishop,
+        Rook,
+        Queen,
+        King,
+    }
 }
